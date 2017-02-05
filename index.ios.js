@@ -7,6 +7,25 @@
 import React, { Component } from 'react';
 import { AppRegistry, Image, Text, View } from 'react-native'
 
+class Blink extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {showText: true};
+
+        setInterval(()=>{
+            this.setState( {showText: !this.state.showText});
+        }, 100);
+    }
+
+    render() {
+        let display = this.state.showText ? this.props.text : ' ';
+
+        return (
+          <Text>{display}</Text>
+        );
+    }
+}
+
 
 
 class Greeting extends Component {
@@ -32,6 +51,9 @@ class LotsOfGreetings extends Component {
                 <Greeting name='Rexxar' />
                 <Greeting name='Jaina' />
                 <Greeting name='Valeera' />
+
+                <Blink text='I love to blink' />
+                <Blink text='Yes blinking is so great' />
             </View>
         );
     }
